@@ -4,7 +4,6 @@ export default createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     outline: 0;
 }
 
@@ -22,5 +21,8 @@ body, input, button{
 }
 button{
     cursor: pointer;
+}
+span{
+    color: #868E96;
 }
 `;
