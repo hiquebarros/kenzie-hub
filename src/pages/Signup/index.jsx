@@ -7,52 +7,80 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect } from "react-router-dom";
 
-const Login = () => {
+import api from "../../services/api";
+
+import { toast } from "react-toastify";
+
+const Login = ({ isAuthenticated }) => {
+  const history = useHistory();
+
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório!"),
     email: yup.string().email("Email inválido").required("Campo obrigatório!"),
-    password: yup.string().min(8).required("Campo obrigatório!"),
-    confirmedPassword: yup
-      .string()
-      .oneOf([yup.ref("password")], "As senhas devem ser iguais")
-      .required("Campo obrigatório!"),
+    bio: yup.string().required("Campo obrigatório!"),
+    contact: yup.string().required("Campo obrigatório!"),
+    password: yup.string().min(8, "A senha deve ter pelo menos 8 caracteres").required("Campo obrigatório!"),
     course_module: yup.string().required("Campo obrigatório!"),
   });
 
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
 
+  const handleResponse = (res) => {
+    console.log(res);
+    toast.success("Sucesso ao criar a conta");
+    history.push("/");
+  };
+
+  const handleError = (err) => {
+    console.log(err);
+    toast.error("Erro ao criar a conta, tente outro Email");
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
+
   const onSubmitFunction = (data) => {
-    console.log(data);
+    api
+      .post("/users", data)
+      .then((response) => handleResponse(response))
+      .catch((error) => handleError(error));
   };
 
   return (
     <Container>
       <NavContainer>
         <h1>Kenzie Hub</h1>
-        <Link to="/"><button>Voltar</button></Link>
+        <Link to="/">
+          <button>Voltar</button>
+        </Link>
       </NavContainer>
 
       <Content>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <h2>Crie sua conta</h2>
           <a>Rapido e grátis, vamos nessa</a>
-          <Input register={register} name={"name"} label={"Nome"}></Input>
-          <Input register={register} name={"email"} label={"Email"}></Input>
-          <Input register={register} name={"password"} label={"Senha"}></Input>
-          <Input
+          <Input error={errors.name?.message} register={register} name={"name"} label={"Nome"}></Input>
+          <Input error={errors.email?.message} register={register} name={"email"} label={"Email"}></Input>
+          <Input error={errors.bio?.message} register={register} name={"bio"} label={"Bio"}></Input>
+          <Input error={errors.contact?.message} register={register} name={"contact"} label={"Contato"}></Input>
+          <Input error={errors.password?.message} register={register} name={"password"} label={"Senha"}></Input>
+          <Select
+            error={errors.course_module?.message}
             register={register}
-            name={"confirmedPassword"}
-            label={"Confirmar Senha"}
-          ></Input>
-          <Select register={register} name={"course_module"} label={"Selecionar modulo"}> </Select>
+            name={"course_module"}
+            label={"Selecionar módulo"}
+          >
+          </Select>
           <Button type="submit" pinkSchema>
             Cadastrar
           </Button>

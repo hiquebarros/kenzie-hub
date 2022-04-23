@@ -27,7 +27,6 @@ export const Content = styled.div`
   a {
     color: #868e96;
     order: 3;
-    cursor: pointer;
   }
 
   h2 {
@@ -47,7 +46,7 @@ export const Content = styled.div`
 
   @media (min-width: 425px) {
     width: 369px;
-    height: 502px;
+    height: 440px;
     padding: 42px 22px;
   }
 `;

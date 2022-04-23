@@ -6,12 +6,11 @@ const Select = ({ label, register, name }) => {
       <h4>{label}</h4>
       <InputContainer>
         <select {...register(name)}>
-            <option value="Primeiro Módulo (Frontend avançado)">Primeiro Módulo</option>
-            <option value="Segundo Módulo (Frontend avançado)">Segundo Módulo</option>
-            <option value="Terceiro Módulo (Frontend avançado)">Terceiro Módulo</option>
-            <option value="Quarto Módulo (Backend avançado)">Quarto Módulo</option>
-            <option value="Quinto Módulo (Backend avançado)">Quinto Módulo</option>
-            <option value="Sexto Módulo (Backend avançado)">Sexto Módulo</option>
+            <option value="Primeiro Módulo (Introdução ao Frontend)">Primeiro Módulo</option>
+            <option value="Segundo Módulo (Frontend Avançado)">Segundo Módulo</option>
+            <option value="Terceiro Módulo (Introdução ao Backend)">Terceiro Módulo</option>
+            <option value="Quarto Módulo (Backend Avançado)">Quarto Módulo</option>
+
         </select>
       </InputContainer>
     </Container>

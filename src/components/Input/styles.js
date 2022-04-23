@@ -10,7 +10,13 @@ font-weight: 400;
 font-size: 12.182px;
 line-height: 0px;
 color: #F8F9FA;
-margin: 22.3336px 0px;
+margin: 15px 0px;
+}
+
+span{
+    font-size: 12px;
+    line-height: 0%;
+    margin: 0;
 }
 `
 
@@ -19,13 +25,13 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 border: 0.9772px solid #F8F9FA;
-margin: 22.3336px 0px;
 background: #343B41;
 border-radius: 3.20867px;
 height: 38.504066467285156px;
 width: 264.6582946777344px;
 border-radius: 3.208672046661377px;
 padding: 0px, 13px, 0px, 13px;
+margin-top: 20px;
 
 input{
     background: transparent;

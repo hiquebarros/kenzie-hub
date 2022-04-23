@@ -34,17 +34,18 @@ export const NavContainer = styled.div`
   }
   @media (min-width: 425px) {
     width: 340px;
-    margin-bottom: 0;
+    margin-bottom: 25px;
   }
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 22px 4px;
   width: 295.83px;
-  height: 645.47px;
+  height: 80%;
   background: #212529;
   box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
@@ -70,7 +71,6 @@ export const Content = styled.div`
 
   @media (min-width: 425px) {
     width: 370px;
-    height: 711px;
     padding: 42px 22px;
   }
 `;

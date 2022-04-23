@@ -5,12 +5,19 @@ import { Container, Content } from "./styles";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect } from "react-router-dom";
 
-const Login = () => {
+import api from "../../services/api";
+
+import { toast } from "react-toastify";
+
+const Login = ({ isAuthenticated, setIsAuthenticated }) => {
+  const history = useHistory();
+
   const formSchema = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório!"),
-    password: yup.string().min(8).required("Campo obrigatório!"),
+    password: yup.string().min(8, "A senha deve ter pelo menos 8 caracteres").required("Campo obrigatório!"),
   });
 
   const {
@@ -21,9 +28,34 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = (data) => {
-    console.log(data)
+  const handleResponse = (res) => {
+    const { token } = res.data;
+    console.log(res);
+
+    localStorage.setItem("@KenzieHub:token", JSON.stringify(token));
+
+    setIsAuthenticated(true);
+
+    toast.success(`Bem vindo, ${res.data.user.name}!`);
+
+    return history.push("/dashboard");
+  };
+
+  const handleError = (err) => {
+    console.log(err);
+    toast.error("Erro ao acessar a conta");
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
   }
+
+  const onSubmitFunction = (data) => {
+    api
+      .post("/sessions", data)
+      .then((response) => handleResponse(response))
+      .catch((error) => handleError(error));
+  };
 
   return (
     <Container>
@@ -31,11 +63,15 @@ const Login = () => {
       <Content>
         <h2>Login</h2>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input register={register} name="email" label={"Email"}></Input>
-          <Input register={register} name="password" label={"Senha"}></Input>
+          <Input error={errors.email?.message} register={register} name="email" label={"Email"}></Input>
+          <Input error={errors.password?.message} register={register} name="password" label={"Senha"}></Input>
           <Button>Entrar</Button>
-          <Link to="/signup"><a>Ainda não possui conta?</a></Link>
-          <Button type="submit" greySchema>Cadastre-se</Button>
+          <a>Ainda não possui conta?</a>
+          <Link to="/signup">
+            <Button type="submit" greySchema>
+              Cadastre-se
+            </Button>
+          </Link>
         </form>
       </Content>
     </Container>
