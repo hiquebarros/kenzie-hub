@@ -30,9 +30,9 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
 
   const handleResponse = (res) => {
     const { token } = res.data;
-    console.log(res);
 
     localStorage.setItem("@KenzieHub:token", JSON.stringify(token));
+    localStorage.setItem("@KenzieHub:id", JSON.stringify(res.data.user.id));
 
     setIsAuthenticated(true);
 

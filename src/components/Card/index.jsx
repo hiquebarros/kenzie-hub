@@ -1,10 +1,10 @@
 import { Container } from "./styles";
 
-const Card = () => {
+const Card = ({tech}) => {
   return (
     <Container>
-      <h2>oi</h2>
-      <h5>oi</h5>
+      <h2>{tech.title}</h2>
+      <h5>{tech.status}</h5>
     </Container>
   );
 };
