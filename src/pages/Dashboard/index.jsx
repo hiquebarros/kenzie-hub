@@ -52,12 +52,12 @@ const Dashboard = ({openModal, isAuthenticated, setIsAuthenticated}) => {
       <Main>
         <MainHeader>
           <h3>Tecnologias</h3>
-          <button onClick={openModal}>+</button>
+          <button onClick={() => openModal('add')}>+</button>
         </MainHeader>
         <CardContainer>
           {user.techs &&
             user.techs.map((tech) => {
-              return <Card key={tech.title} tech={tech}></Card>;
+              return <Card openModal={openModal} key={tech.title} tech={tech}></Card>;
             })}
         </CardContainer>
       </Main>

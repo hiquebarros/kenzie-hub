@@ -6,6 +6,7 @@ import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 import AddModal from "./components/AddModal";
+import EditModal from "./components/EditModal";
 
 
 
@@ -26,20 +27,23 @@ Modal.setAppElement("#root");
 function App() {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [whichModal, setWhichModal] = useState('add')
 
-  function openModal() {
+  function openModal(type) {
+    setWhichModal(type)
     setIsOpen(true);
   }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
+    //subtitle.style.color = "#f00";
   }
 
   function closeModal() {
     setIsOpen(false);
   }
 
+  console.log(whichModal)
 
   return (
     <div className="App">
@@ -51,8 +55,8 @@ function App() {
         style={customStyles}
         contentLabel="Example Modal"
       >
- 
-        <AddModal closeModal={closeModal}></AddModal>
+        {whichModal === "add" ? <AddModal closeModal={closeModal}></AddModal> : <EditModal closeModal={closeModal}></EditModal>}
+        
                         
       </Modal>
       <ToastContainer

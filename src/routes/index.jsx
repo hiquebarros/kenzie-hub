@@ -25,7 +25,7 @@ const Routes = ({openModal}) => {
                 <Signup isAuthenticated={isAuthenticated}/>
             </Route>
             <Route path='/dashboard'>
-                <Dashboard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} openModal={openModal} />
+                <Dashboard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} openModal={openModal}/>
             </Route>
         </Switch>
      );

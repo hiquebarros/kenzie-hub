@@ -13,6 +13,8 @@ flex: none;
 order: 0;
 flex-grow: 0;
 margin: 16px 0px;
+cursor: pointer;
+
 h2 {
     font-family: "Inter";
     font-style: normal;
