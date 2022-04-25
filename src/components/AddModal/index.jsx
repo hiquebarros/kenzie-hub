@@ -20,8 +20,8 @@ const AddModal = ({closeModal}) => {
               Authorization: `Bearer ${JSON.parse(token)}`,
             }
       })
-      .then((response) => console.log(response))
-      .then((response) => console.log(response))
+      .then((_) => closeModal())
+      .then((error) => console.log(error))
       ;
     }
 

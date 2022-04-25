@@ -25,37 +25,31 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 function App() {
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [whichModal, setWhichModal] = useState('add')
+  const [techId, setTechId] = useState('')
 
-  function openModal(type) {
+  function openModal(type, id) {
+    setTechId(id)
     setWhichModal(type)
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    //subtitle.style.color = "#f00";
-  }
 
   function closeModal() {
     setIsOpen(false);
   }
-
-  console.log(whichModal)
 
   return (
     <div className="App">
       <GlobalStyle />
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {whichModal === "add" ? <AddModal closeModal={closeModal}></AddModal> : <EditModal closeModal={closeModal}></EditModal>}
+        {whichModal === "add" ? <AddModal closeModal={closeModal}></AddModal> : <EditModal techId={techId} closeModal={closeModal}></EditModal>}
         
                         
       </Modal>
