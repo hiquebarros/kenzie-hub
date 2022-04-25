@@ -1,4 +1,4 @@
-import { Container, Header, Content } from "./styles";
+import { Container, Header, Content, ContentContainer } from "./styles";
 
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
@@ -28,16 +28,19 @@ const AddModal = ({closeModal}) => {
   return (
     <Container>
       <Header>
+        <div>
           <h3>Cadastrar tecnologia</h3>
           <button onClick={closeModal}>X</button>
+        </div>
       </Header>
       <Content>
+        <ContentContainer>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <div className="label">
             <label>Nome</label>
           </div>
           <input {...register('title')}></input>
-          <div>
+          <div className="label">
             <label>Selecionar status</label>
           </div>
           <select {...register('status')}>
@@ -49,6 +52,7 @@ const AddModal = ({closeModal}) => {
           </select>
           <button type="submit">Cadastrar Tecnologia</button>
         </form>
+        </ContentContainer>
       </Content>
     </Container>
   );

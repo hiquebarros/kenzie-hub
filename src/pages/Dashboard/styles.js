@@ -48,7 +48,6 @@ export const Header = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 12px;
   height: 131px;
   width: 100%;
   background: #121214;
