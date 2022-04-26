@@ -64,7 +64,7 @@ function App() {
         draggable
         pauseOnHover
       />
-      <Routes openModal={openModal} />
+      <Routes openModal={openModal} modalIsOpen={modalIsOpen} />
     </div>
   );
 }

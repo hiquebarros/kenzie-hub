@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { Redirect } from "react-router-dom";
 
-const Dashboard = ({openModal, isAuthenticated, setIsAuthenticated}) => {
+const Dashboard = ({openModal, isAuthenticated, setIsAuthenticated, modalIsOpen}) => {
   const [user, setUser] = useState("");
   
   useEffect(() => {
@@ -24,9 +24,7 @@ const Dashboard = ({openModal, isAuthenticated, setIsAuthenticated}) => {
       .get(`/users/${JSON.parse(id)}`)
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
-  }, []);
-
-  console.log(user);
+  }, [modalIsOpen]);
 
   const clearStorage = () => {
     localStorage.clear()

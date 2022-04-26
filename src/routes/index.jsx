@@ -4,7 +4,7 @@ import Dashboard from '../pages/Dashboard'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 
-const Routes = ({openModal}) => {
+const Routes = ({openModal, modalIsOpen}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
@@ -25,7 +25,7 @@ const Routes = ({openModal}) => {
                 <Signup isAuthenticated={isAuthenticated}/>
             </Route>
             <Route path='/dashboard'>
-                <Dashboard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} openModal={openModal}/>
+                <Dashboard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} openModal={openModal} modalIsOpen={modalIsOpen}/>
             </Route>
         </Switch>
      );
