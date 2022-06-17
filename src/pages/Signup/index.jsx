@@ -22,7 +22,13 @@ const Login = ({ isAuthenticated }) => {
     email: yup.string().email("Email inválido").required("Campo obrigatório!"),
     bio: yup.string().required("Campo obrigatório!"),
     contact: yup.string().required("Campo obrigatório!"),
-    password: yup.string().min(8, "A senha deve ter pelo menos 8 caracteres").required("Campo obrigatório!"),
+    password: yup.string()
+    .required("Senha obrigatória!")
+    .min(8, "Sua senha deve conter ao menos 8 caracteres")
+    .matches(/.*\d/, "Sua senha deve conter ao menos um dígito")
+    .matches(/.*[a-z]/, "Sua senha deve conter ao menos uma letra minúscula")
+    .matches(/.*[A-Z]/, "Sua senha deve conter ao menos uma letra maiúscula")
+    .matches(/.*[!$*&@#]/, "Sua senha deve conter ao menos um caractere especial"),
     course_module: yup.string().required("Campo obrigatório!"),
   });
 
@@ -64,16 +70,15 @@ const Login = ({ isAuthenticated }) => {
           <button>Voltar</button>
         </Link>
       </NavContainer>
-
       <Content>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <h2>Crie sua conta</h2>
           <a>Rapido e grátis, vamos nessa</a>
-          <Input error={errors.name?.message} register={register} name={"name"} label={"Nome"}></Input>
-          <Input error={errors.email?.message} register={register} name={"email"} label={"Email"}></Input>
-          <Input error={errors.bio?.message} register={register} name={"bio"} label={"Bio"}></Input>
-          <Input error={errors.contact?.message} register={register} name={"contact"} label={"Contato"}></Input>
-          <Input error={errors.password?.message} register={register} name={"password"} label={"Senha"}></Input>
+          <Input type='text' error={errors.name?.message} register={register} name={"name"} label={"Nome"}></Input>
+          <Input type='text' error={errors.email?.message} register={register} name={"email"} label={"Email"}></Input>
+          <Input type='text' error={errors.bio?.message} register={register} name={"bio"} label={"Bio"}></Input>
+          <Input type='text' error={errors.contact?.message} register={register} name={"contact"} label={"Contato"}></Input>
+          <Input type='password' error={errors.password?.message} register={register} name={"password"} label={"Senha"}></Input>
           <Select
             error={errors.course_module?.message}
             register={register}
