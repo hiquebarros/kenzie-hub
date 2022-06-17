@@ -63,8 +63,8 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
       <Content>
         <h2>Login</h2>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
-          <Input error={errors.email?.message} register={register} name="email" label={"Email"}></Input>
-          <Input error={errors.password?.message} register={register} name="password" label={"Senha"}></Input>
+          <Input type='text' error={errors.email?.message} register={register} name="email" label={"Email"}></Input>
+          <Input type='password' error={errors.password?.message} register={register} name="password" label={"Senha"}></Input>
           <Button>Entrar</Button>
           <a>Ainda não possui conta?</a>
           <Link to="/signup">
