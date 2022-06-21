@@ -5,14 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 `;
 
 export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
+  margin: 40px 0 0 0;
   width: 266px;
   h1 {
     color: #ff577f;

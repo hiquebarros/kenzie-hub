@@ -27,6 +27,7 @@ export const Content = styled.div`
   a {
     color: #868e96;
     order: 3;
+    margin: 0;
   }
 
   h2 {

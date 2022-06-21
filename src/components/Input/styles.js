@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
 text-align: left;
+margin: 0 0 5px 0;
 
 h4{
 font-family: 'Inter';
