@@ -34,7 +34,6 @@ export const NavContainer = styled.div`
   }
   @media (min-width: 425px) {
     width: 340px;
-    margin-bottom: 25px;
   }
 `;
 
@@ -71,6 +70,6 @@ export const Content = styled.div`
 
   @media (min-width: 425px) {
     width: 370px;
-    padding: 42px 22px;
+    margin: 10px 0 0 0;
   }
 `;

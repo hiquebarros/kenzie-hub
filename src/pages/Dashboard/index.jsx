@@ -39,11 +39,11 @@ const Dashboard = ({openModal, isAuthenticated, setIsAuthenticated, modalIsOpen}
     <Container>
       <NavContainer>
         <h1>Kenzie Hub</h1>
-          <button onClick={clearStorage}>Voltar</button>
+          <button onClick={clearStorage}>Sair</button>
       </NavContainer>
       <Header>
         <div>
-          <h2>Ola, {user.name && user.name}</h2>
+          <h2>Olá, {user.name && user.name}</h2>
           <h5>{user.course_module && user.course_module}</h5>
         </div>
       </Header>
