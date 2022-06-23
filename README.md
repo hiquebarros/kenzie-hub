@@ -7,4 +7,4 @@ O Kenziehub é um hub de portfólios de programadores. O projeto foi desenvolvid
 
 ## 2. Links Relevantes
 
-- href="https://kenzie-hub-kappa-sable.vercel.app/" target="_blank">
+- https://kenzie-hub-kappa-sable.vercel.app/
